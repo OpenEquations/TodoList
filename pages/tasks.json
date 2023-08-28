@@ -1,10 +1,10 @@
 [
   {
-    "text": "wake",
-    "completed": false
+    "text": "geno",
+    "completed": true
   },
   {
-    "text": "geno",
+    "text": "drink",
     "completed": false
   }
 ]

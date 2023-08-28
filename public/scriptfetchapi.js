@@ -27,7 +27,7 @@ taskForm.addEventListener('submit', async function (e) {
 });
 
 async function saveTasksToServer(tasks) {
-    // Your server save logic remains the same...
+
     const url = '/saveTasks';
     const options = {
         method: 'POST',

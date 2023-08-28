@@ -14,14 +14,12 @@ taskForm.addEventListener('submit', function (e) {
             completed: false
         };
         tasks.push(task); 
-       // savetasktoserver(tasks);
        saveTasksToServer(tasks);
         renderTasks(); 
         taskInput.value = ''; 
     }
 });
 function saveTasksToServer(tasks) {
-    // Create an XMLHttpRequest or use the fetch API
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/saveTasks', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -29,20 +27,18 @@ function saveTasksToServer(tasks) {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                console.log('Tasks saved successfully.'); // Successful response from the server
+                console.log('Tasks saved successfully.'); 
             } else {
-                console.error('Error saving tasks:', xhr.status, xhr.statusText); // Error response from the server
+                console.error('Error saving tasks:', xhr.status, xhr.statusText); 
             }
         }
     };
 
-    // Send the tasks data to the backend as JSON
     xhr.send(JSON.stringify({ tasks }));
     console.log('Sending AJAX request with data:', tasks);
 
 }
 
-// ... Rest of your existing frontend code ...
 
 
 function renderTasks() {

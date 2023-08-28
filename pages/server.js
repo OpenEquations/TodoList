@@ -8,7 +8,6 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use(express.json());
 
-//app.use(express.json());
 app.get('/', (req, res) => {
     res.send('Hello from the Express server!');
 });
@@ -16,7 +15,6 @@ app.post('/saveTasks', (req, res) => {
     const tasksData = req.body.tasks;
     const filePath = path.join(__dirname, 'tasks.json');
 
-    // Write tasks data to the JSON file
     fs.writeFile(filePath, JSON.stringify(tasksData, null, 2), err => {
         console.log('Received tasks data:', tasksData);
 
