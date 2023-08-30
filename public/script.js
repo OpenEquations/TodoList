@@ -14,11 +14,32 @@ taskForm.addEventListener('submit', function (e) {
             completed: false
         };
         tasks.push(task); 
-
+       saveTasksToServer(tasks);
         renderTasks(); 
         taskInput.value = ''; 
     }
 });
+function saveTasksToServer(tasks) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/saveTasks', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                console.log('Tasks saved successfully.'); 
+            } else {
+                console.error('Error saving tasks:', xhr.status, xhr.statusText); 
+            }
+        }
+    };
+
+    xhr.send(JSON.stringify({ tasks }));
+    console.log('Sending AJAX request with data:', tasks);
+
+}
+
+
 
 function renderTasks() {
     taskList.innerHTML = ''; 
